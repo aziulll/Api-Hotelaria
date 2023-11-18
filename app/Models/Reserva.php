@@ -7,23 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reserva extends Model
 {
+    use HasFactory;
+
     protected $table = 'reservas';
-    protected $fillable = ['data_checkin', 'data_checkout', 'quarto_id', 'cliente_id'];
+    protected $fillable = ['data_checkin', 'data_checkout', 'quarto_id', 'user_id'];
 
     /**
      *
-     * @param int $clienteId ID do cliente
+     * @param int 
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function reservasPorCliente($clienteId)
+    public function reservasPorCliente($userId)
     {
-        return $this->where('cliente_id', $clienteId)->get();
+        return $this->where('user_id', $userId)->get();
     }
 
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class, 'cliente_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
-
-

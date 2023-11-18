@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Quarto;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
+
 class QuartoController extends Controller
 {
-
-
     public function criarQuarto(Request $request)
     {
 
@@ -44,29 +42,5 @@ class QuartoController extends Controller
         return response()->json($quartosDisponiveis);
     }
 
-    public function ocupadosPorData(Request $request)
-    {
 
-
-        $dataInicial = $request->input('data_inicial');
-        $dataFinal = $request->input('data_final');
-
-        $quartosIndisponiveis = Quarto::where('disponivel', false)
-            ->whereHas('reservas', function ($query) use ($dataInicial, $dataFinal) {
-                $query->where(function ($q) use ($dataInicial, $dataFinal) {
-                    $q->whereDate('data_checkin', '<=', $dataFinal)
-                        ->whereDate('data_checkout', '>=', $dataInicial);
-                });
-            })
-            ->get();
-        $countQuartosIndisponiveis = $quartosIndisponiveis->count();
-
-
-
-        if ($countQuartosIndisponiveis > 0) {
-            return response()->json($quartosIndisponiveis);
-        } else {
-            return response()->json(["Todos os quartos estão disponíveis"]);
-        }
-    }
 }
