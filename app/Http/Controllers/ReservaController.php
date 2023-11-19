@@ -76,7 +76,7 @@ public function ocupadosPorData(Request $request)
         $countQuartosIndisponiveis = $quartosIndisponiveis->count();
 
         if ($countQuartosIndisponiveis > 0) {
-            return response()->json($quartosIndisponiveis);
+            return response()->json(['quartos_ocupados_data' => $quartosIndisponiveis]);
         } else {
             return response()->json(["Todos os quartos estão disponíveis nessa data"]);
         }
