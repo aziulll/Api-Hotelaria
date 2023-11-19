@@ -174,7 +174,6 @@ FROM quartos q
 JOIN reservas r ON q.id = r.quarto_id
 WHERE r.data_checkin <= '2023-08-20' 
   AND r.data_checkout >= '2023-08-30';
-  AND q.disponivel = false;
   ```
 ## Stack utilizada
 
