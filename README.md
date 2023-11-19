@@ -8,7 +8,7 @@
 ## Utilização do Projeto
 
 ```bash
-  1. Clone esse projeto git@github.com:aziulll/Api-Hotelaria.git 
+  1. Clone esse projeto https://github.com/aziulll/Api-Hotelaria.git 
 
   2. Faça a instalação de um Ambiente de Desenvolvimento PHP
 
@@ -36,12 +36,18 @@
 
 ```
     
-## O que fazer antes de testar a API no Postman? 
+## O que fazer no terminal antes de testar a API no Postman? 
+Abra o projeto 
 ```bash
    cd Api-Hotelaria
 ```
+Crie o Arquivo .env
 ```bash
-   code . (abrir no vs code)
+cp .env.example .env
+```
+Abrir no vscode 
+```bash
+   code .
 ```
 ```bash
    php artisan migrate
@@ -52,7 +58,7 @@
 
 ## Configurações no Postman: 
 
-**Headers s/ auth**: 
+**Headers para rotas sem auth**: 
 
 ```bash
 Content-Type - application/json
@@ -61,7 +67,7 @@ Accept  - application/json
 
 ```
 
-**Headers w/ auth**:
+**Headers para rotas com auth**:
 
 ```bash
 Content-Type - application/json
@@ -73,9 +79,9 @@ Authorization - Bearer + Token
 
 (Bearer 1|TnfwI4aWlqvsZrNswywhL3yRxHWj072UbfJUl0CE7f6f0e26) - exemplo
 
-OBS.: Esse token será gerado ao no Json de Autenticação de Usuário
+OBS.: Esse token será gerado no Json de Autenticação de Usuário
 
-## Realizar o consumo da API - **Cadastro de clientes**
+## Realizar o consumo da API - **Cadastro de clientes** 
 
    POST  /api/clientes/novo
 
@@ -93,7 +99,7 @@ Exemplo que pode ser adicionado no Body:
     "telefone": "8023890"
 }
 
-Realizar o consumo da API - **Autenticação**
+## Realizar o consumo da API - **Autenticação**
 
 
 | Parâmetro   | Tipo       | Descrição                                   |
